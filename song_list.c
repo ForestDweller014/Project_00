@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "song.h"
+#include "song_list.h"
 
 struct song_node *new_song(char *name, char *artist) {
 	struct song_node *new_s = malloc(sizeof(struct song_node));
@@ -38,35 +38,11 @@ struct song_node *insert_alphabetical(struct song_node *curr_list, char *name, c
 	return head;
 }
 
-void add_song(struct song_node **catalog, char *name, char *artist) {
-	char c = *artist;
-	if (c <= 122 && c >= 97) {
-		*(catalog + (c - 97)) = insert_alphabetical(*(catalog + (c - 97)), name, artist);
-	} else if (c <= 90 && c >= 65) {
-		*(catalog + (c - 65)) = insert_alphabetical(*(catalog + (c - 65)), name, artist);
-	} else {
-		*(catalog + 26) = insert_alphabetical(*(catalog + 26), name, artist);
-	}
-} 
-
 void print_list(struct song_node *curr_list) {
 	while(curr_list) {
 		printf("Name: %s\n", curr_list->name);
 		printf("Artist: %s\n", curr_list->artist);
 		printf("\n");
 		curr_list = curr_list->next;
-	}
-}
-
-void print_catalog(struct song_node **catalog) {
-	int i;
-	for (i = 0; i < 27; i++) {
-		if (i == 26) {
-			printf("List of songs that start with a non-alphabet symbol\n---------------------------------------------------\n");
-			print_list(*(catalog + i));
-		} else {
-			printf("List of songs that start with \"%c\"\n---------------------------------\n", i + 97);
-			print_list(*(catalog + i));
-		}
 	}
 }

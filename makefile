@@ -1,5 +1,5 @@
-prog: song.c main.c
-	gcc -o prog song.c main.c
+prog: song_list.c song_array.c main.c
+	gcc -o prog song_list.c song_array.c main.c
 
 run:
 	./prog
