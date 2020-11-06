@@ -64,7 +64,7 @@ int get_size(struct song_node *curr_list) {
 
 struct song_node *random_node(struct song_node *curr_list) {
 	int size = get_size(curr_list);
-	int index = rand() % size;
+	int index = (int)((double)rand() / ((double)(RAND_MAX) + 1) * size);
 	int count = 0;
 	while (curr_list) {
 		if (count == index) {

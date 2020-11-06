@@ -29,4 +29,8 @@ struct song_node *free_list (struct song_node *);
 
 struct song_node *random_node(struct song_node *curr_list);
 
+int get_size(struct song_node *curr_list);
+
+void print_song(struct song_node *song);
+
 #endif

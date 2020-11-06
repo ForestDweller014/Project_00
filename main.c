@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 #include "song_list.h"
 #include "song_array.h"
 
 int main() {
-	/*
-	struct song_node *library[27];
+	/*struct song_node *library[27];
 	int i;
 	for (i = 0; i < 27; i++) {
 		library[i] = NULL;
@@ -20,12 +20,11 @@ int main() {
 	add_song(library, "Chosen One", "Polo G");
 	add_song(library, "Mr. Crowley", "Ozzy Osbourne");
 	add_song(library, "Sicko Mode", "Travis Scott");
-	add_song(library, "Black", "*Grizzly*");
+	add_song(library, "Random Song", "*Weird Name*");
 	print_library(library);
-	struct song_node *rnode = random_node(library[1]);
-	printf("Name: %s\n", rnode->name);
-	printf("Artist: %s\n", rnode->artist);
-	*/
+	srand(time(NULL));
+	shuffle(library, 5);
+	print_song(random_node(library[1]));*/
 	
 	printf ("Testing insert_front, insert_alphabetical, print_list\n------------------------\n");
 	struct song_node *library = NULL;

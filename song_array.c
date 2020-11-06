@@ -3,49 +3,45 @@
 #include <stdlib.h>
 #include "song_list.h"
 
-int num_lists = 0;
+int num_songs = 0;
 
 void add_song(struct song_node **library, char *name, char *artist) {
 	char c = *artist;
 	if (c <= 122 && c >= 97) {
-		if (!*(library + (c - 97))) {
-			num_lists++;
-		}
 		*(library + (c - 97)) = insert_alphabetical(*(library + (c - 97)), name, artist);
 	} else if (c <= 90 && c >= 65) {
-		if (!*(library + (c - 65))) {
-			num_lists++;
-		}
 		*(library + (c - 65)) = insert_alphabetical(*(library + (c - 65)), name, artist);
 	} else {
-		if (!*(library + 26)) {
-			num_lists++;
-		}
 		*(library + 26) = insert_alphabetical(*(library + 26), name, artist);
 	}
+	num_songs++;
 } 
+
+int discrete(double *probabilities) {
+	double sum = 0;
+	int i;
+	double random = (double)rand() / ((double)RAND_MAX + 1);
+	for (i = 0; i < 27; i++) {
+		sum += *(probabilities + i);
+		if (random < sum) {
+			return i;
+		}
+	}
+	return -1;
+}
 
 void shuffle(struct song_node **library, int num) {
 	struct song_node **tracker = library;
-	int index = rand() % num_lists;
-	int count = 0;
-	int print_count = 0;
-	while (1) {
-		if (count == index) {
-			struct song_node *rnode = random_node(*tracker);
-			printf("Name: %s\n", rnode->name);
-			printf("Artist: %s\n", rnode->artist);
-			printf("\n");
-			tracker = library - 1;
-			index = rand() % num_lists;
-			count = -1;
-			print_count++;
-			if (print_count == num) {
-				return;
-			}
-		}
-		count++; 
+	double probabilities[27];
+	int i;
+	for (i = 0; i < 27; i++) {
+		probabilities[i] = (double)1 / (double)num_songs * get_size(*tracker);
 		tracker++;
+	}
+	int j;
+	for (j = 0; j < num; j++) {
+		int index = discrete(probabilities);
+		print_song(random_node(*(library + index)));
 	}
 }
 
