@@ -22,6 +22,9 @@ int main() {
 	add_song(library, "Sicko Mode", "Travis Scott");
 	add_song(library, "Black", "*Grizzly*");
 	print_library(library);
+	struct song_node *rnode = random_node(library[1]);
+	printf("Name: %s\n", rnode->name);
+	printf("Artist: %s\n", rnode->artist);
 	*/
 	
 	printf ("Testing insert_front, insert_alphabetical, print_list\n------------------------\n");
@@ -32,7 +35,6 @@ int main() {
 	library = insert_alphabetical (library, "Soothsayer", "Buckethead");
 	printf("\nPrinting List\n\n");
 	print_list (library);
-	printf("\n");
 	
 	printf ("Testing find_artist_song\n------------------------\n");
 	find_artist_song(library, "Chosen One", "Polo G");

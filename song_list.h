@@ -27,4 +27,6 @@ struct song_node *delete_song (struct song_node *, char *);
 
 struct song_node *free_list (struct song_node *);
 
+struct song_node *random_node(struct song_node *curr_list);
+
 #endif
