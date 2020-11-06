@@ -94,7 +94,7 @@ void free_song (struct song_node *song) {
 	free (song);
 }
 
-struct song_node *find_artist_song (struct song_node *front, char *name, char *artist) {
+struct song_node *find_artist_song (struct song_node *front, char *name, char *artist) { 
 	printf ("Finding %s, by %s\n", name, artist);
 	while (front) {
 		if (!strcmp(front->artist, artist) && !strcmp(front->name, name)) {
@@ -103,9 +103,11 @@ struct song_node *find_artist_song (struct song_node *front, char *name, char *a
 			break;
 		}
 		front = front->next;
-		if (!front)
+		if (!front) {
 			printf ("Song not found\n");
+		}
 	}
+	return NULL;
 }
 
 struct song_node *find_first_artist_song (struct song_node *front, char *artist) {
@@ -117,9 +119,11 @@ struct song_node *find_first_artist_song (struct song_node *front, char *artist)
 			break;
 		}
 		front = front->next;
-		if (!front)
+		if (!front) {
 			printf ("Artist not found\n");
+		}
 	}
+	return NULL;
 }
 
 //This could probably be better optimized, it works though
@@ -157,4 +161,6 @@ struct song_node *free_list (struct song_node *song) {
 		songs_deleted++;
 	}
 	printf ("Songs deleted: %d\n", songs_deleted);
+	
+	return NULL;
 }
