@@ -6,27 +6,26 @@
 #include "song_array.h"
 
 int main() {
-	/*struct song_node *library[27];
+	struct song_node *library[27];
 	int i;
 	for (i = 0; i < 27; i++) {
 		library[i] = NULL;
 	}
 	add_song(library, "Take What You Want", "Post Malone");
-	add_song(library, "Big Poppa", "Biggie Smalls");
+	add_song(library, "Hotel California", "The Eagles");
 	add_song(library, "While My Guitar Gently Weeps", "George Harrison");
-	add_song(library, "Fade to Black", "Metallica");
-	add_song(library, "Don't Cry", "Guns N' Roses");
+	add_song(library, "Little Wing", "Jimi Hendrix"); 
+	add_song(library, "Sweet Child O' Mine", "Guns N' Roses");
 	add_song(library, "Soothsayer", "Buckethead");
-	add_song(library, "Chosen One", "Polo G");
+	add_song(library, "95 Freestyle", "Big L");  
 	add_song(library, "Mr. Crowley", "Ozzy Osbourne");
-	add_song(library, "Sicko Mode", "Travis Scott");
+	add_song(library, "Free Bird", "Lynyrd Skynyrd");  
 	add_song(library, "Random Song", "*Weird Name*");
 	print_library(library);
 	srand(time(NULL));
 	shuffle(library, 5);
-	print_song(random_node(library[1]));*/
 	
-	printf ("Testing insert_front, insert_alphabetical, print_list\n------------------------\n");
+	/*printf ("Testing insert_front, insert_alphabetical, print_list\n------------------------\n");
 	struct song_node *library = NULL;
 	library = insert_front (library, "Take What You Want", "Post Malone");
 	library = insert_front (library, "While My Guitar Gently Weeps", "George Harrison");
@@ -54,7 +53,7 @@ int main() {
 	printf("\n");
 	
 	library = free_list (library);
-	printf("\n");
+	printf("\n");*/
 	
 	return 0;
 }

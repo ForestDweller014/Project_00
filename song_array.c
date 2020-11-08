@@ -31,11 +31,12 @@ int discrete(double *probabilities) {
 }
 
 void shuffle(struct song_node **library, int num) {
+	printf("Shuffled Playlist\n-----------------\n");
 	struct song_node **tracker = library;
 	double probabilities[27];
 	int i;
 	for (i = 0; i < 27; i++) {
-		probabilities[i] = (double)1 / (double)num_songs * get_size(*tracker);
+		probabilities[i] = (double)get_size(*tracker) / (double)num_songs;
 		tracker++;
 	}
 	int j;
