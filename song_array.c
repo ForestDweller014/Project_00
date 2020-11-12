@@ -113,7 +113,7 @@ void delete_song_from_lib (struct song_node **library, char* name, char* artist)
 	}
 }
 
-struct song_node **clear_lib(struct song_node **library) {
+void clear_lib(struct song_node **library) {
  	for (int i = 0; i < 27; i++) {
 		struct song_node *curr_list = *(library + i);
 		free_list(curr_list);
