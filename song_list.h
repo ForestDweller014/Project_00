@@ -1,6 +1,3 @@
-#ifndef SONG_H
-#define SONG_H
-
 struct song_node {
 	char name[100]; 
 	char artist[100]; 
@@ -32,5 +29,3 @@ struct song_node *random_node(struct song_node *curr_list);
 int get_size(struct song_node *curr_list);
 
 void print_song(struct song_node *song);
-
-#endif
