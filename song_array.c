@@ -103,17 +103,29 @@ void print_artist_songs(struct song_node **library, char *artist) {
 }
 
 /*void delete_song(struct song_node **library, char *name, char *artist) {
- 	int res = find_index(artist);
+	char c = *artist;
+	struct song_node *curr_list;
+	if (c <= 122 && c >= 97) {
+		curr_list = *(library + (c - 97));
+	} else if (c <= 90 && c >= 65) {
+		curr_list = *(library + (c - 65));
+	} else {
+		curr_list = *(library + 26);
+	}
 
- 	struct song_node *song = (library + res);
-
- 	(library + res)->head = delete_song(song, name, artist);
-}
-
-void clear_lib(struct song_node **library) {
- 	int i = 0;
- 	while (i < 27) {
-     	if ((library + i)->head != NULL) (library + i)->head = free_list((library + i)->head);
-     	i++;
- 	}
+  	while (curr_list) {
+  		if (!strcmp(curr_list->artist, artist)) {
+  			a = 1;
+  			print_song(curr_list);
+  		}
+  		curr_list = curr_list->next;
+  	}
 }*/
+
+struct song_node **clear_lib(struct song_node **library) {
+ 	for (int i = 0; i < 27; i++) {
+		struct song_node *curr_list = *(library + i);
+		free_list(curr_list);
+	}
+	return NULL;
+}

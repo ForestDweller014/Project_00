@@ -80,6 +80,10 @@ int main() {
 
 	printf("\nTesting search_song on \"Hotel California\"\n-----------------------------------------\n");
 	print_song(search_song(library, "Hotel California", "The Eagles"));
+
+	printf("\nTesting clear_lib\n-----------------\n");
+	clear_lib(library);
+	print_library(library);
 	
 	return 0;
 }
