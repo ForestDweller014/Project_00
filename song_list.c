@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <time.h>
 #include "song_list.h"
 
 struct song_node *new_song(char *name, char *artist) {
@@ -64,8 +63,7 @@ int get_size(struct song_node *curr_list) {
 
 struct song_node *random_node(struct song_node *curr_list) {
 	int size = get_size(curr_list);
-	srand(time(NULL));
-	int index = rand() % size;
+	int index = (int)((double)rand() / ((double)(RAND_MAX) + 1) * size);
 	int count = 0;
 	while (curr_list) {
 		if (count == index) {
@@ -97,7 +95,6 @@ void print_list(struct song_node *curr_list) {
 }
 
 void free_song(struct song_node *song) {
-	printf ("Deleting %s by %s\n", song->name, song->artist);
 	free(song);
 }
 
@@ -149,7 +146,7 @@ struct song_node *delete_song(struct song_node *front, char *search_name) {
 struct song_node *free_list(struct song_node *song) {
 	while (song) {
 		struct song_node *next_s = song->next;
-		free_song(song);
+		free(song);
 		song = next_s;
 	}
 	return NULL;
