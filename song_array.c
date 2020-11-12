@@ -118,5 +118,4 @@ void clear_lib(struct song_node **library) {
 		struct song_node *curr_list = *(library + i);
 		free_list(curr_list);
 	}
-	return NULL;
 }
