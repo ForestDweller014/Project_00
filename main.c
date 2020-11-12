@@ -63,15 +63,23 @@ int main() {
 	add_song(library, "Soothsayer", "Buckethead");
 	add_song(library, "95 Freestyle", "Big L");  
 	add_song(library, "Mr. Crowley", "Ozzy Osbourne");
+	add_song(library, "Barking at the Moon", "Ozzy Osbourne");
+	add_song(library, "Crazy Train", "Ozzy Osbourne");
 	add_song(library, "Free Bird", "Lynyrd Skynyrd");  
 	add_song(library, "Random Song", "*Weird Name*");
 
 	printf("\nPrinting Library\n----------------\n");
 	print_library(library);
 
-	printf("\nShuffled Playlist\n-----------------\n");
+	printf("\nShuffled Playlist of 5 Songs\n----------------------------\n");
 	srand(time(NULL));
 	shuffle(library, 5);
+
+	printf("\nTesting print_artist_songs on \"Ozzy Osbourne\"\n---------------------------------------------\n");
+	print_artist_songs(library, "Ozzy Osbourne");
+
+	printf("\nTesting search_song on \"Hotel California\"\n-----------------------------------------\n");
+	print_song(search_song(library, "Hotel California", "The Eagles"));
 	
 	return 0;
 }

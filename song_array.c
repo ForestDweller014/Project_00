@@ -68,40 +68,41 @@ void print_library(struct song_node **library) {
 	}
 }
 
-/*struct song_node *search_song(struct song_node **library, char *name, char *artist) {
-     int val;
-     val = find_index(artist);
-
-     struct song_node *to_head = ((library+val)-> head);
-
-     return(find_artist_song(to_head,name,artist));
-}
-
-struct song_node *search_artist(struct song_node **library, char *artist) {
-     int val;
-     val = find_index(artist);
-
-     struct song_node *to_head = ((library+val)->head);
-
-     return(find_first_arist_song(to_head, artist));
+struct song_node *search_song(struct song_node **library, char *name, char *artist) {
+	for (int i = 0; i < 27; i++) {
+		struct song_node *found_song = find_artist_song(*(library + i), name, artist);
+		if (found_song) {
+			return found_song;
+		}
+	}
+	return NULL;
 }
 
 void print_artist_songs(struct song_node **library, char *artist) {
-    int res; 
-    res = find_index(artist); 
-    struct song_node *next_pointer = ((library+res)->head); 
+    char c = *artist;
+	struct song_node *curr_list;
+	if (c <= 122 && c >= 97) {
+		curr_list = *(library + (c - 97));
+	} else if (c <= 90 && c >= 65) {
+		curr_list = *(library + (c - 65));
+	} else {
+		curr_list = *(library + 26);
+	}
 
- 	printf("Printing [%s]", a);
-
-    while (next_pointer != NULL) {
-        if(strcmp(next_pointer->artist, a) == 0){
-            print_song(next_pointer); 
-        }
-		next_pointer = next_pointer->next; 
-    }
+	int a = 0;
+  	while (curr_list) {
+  		if (!strcmp(curr_list->artist, artist)) {
+  			if (a) {
+  				printf("\n");
+  			}
+  			a = 1;
+  			print_song(curr_list);
+  		}
+  		curr_list = curr_list->next;
+  	}
 }
 
-void delete_song(struct song_node **library, char *name, char *artist) {
+/*void delete_song(struct song_node **library, char *name, char *artist) {
  	int res = find_index(artist);
 
  	struct song_node *song = (library + res);
