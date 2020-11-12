@@ -6,9 +6,12 @@
 #include "song_array.h"
 
 int main() {
+
+	printf("---------------------\nSONG LINKED LIST TEST\n---------------------\n");
+	
 	struct song_node *list = NULL;
 
-	printf("Testing insert_front\n--------------------\n");
+	printf("\nTesting insert_front\n--------------------\n");
 	list = insert_front(list, "Take What You Want", "Post Malone");
 	list = insert_front(list, "While My Guitar Gently Weeps", "George Harrison");
 
@@ -34,12 +37,17 @@ int main() {
 	printf("\nPrinting List\n-------------\n");
 	print_list(list);
 	
+	printf("\nTesting random_node\n-------------------\n");
+	print_song(random_node(list));
+	
 	printf("\nTesting free_list\n-----------------\n");
 	list = free_list(list);
 
 	printf("\nPrinting List\n-------------\n");
 	print_list(list);
 
+	printf("\n------------------\nSONG LIBRARY TEST\n------------------\n");
+	
 	struct song_node *library[27];
 	int i;
 	for (i = 0; i < 27; i++) {
@@ -64,5 +72,6 @@ int main() {
 	printf("\nShuffled Playlist\n-----------------\n");
 	srand(time(NULL));
 	shuffle(library, 5);
+	
 	return 0;
 }
