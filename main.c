@@ -83,7 +83,6 @@ int main() {
 
 	printf("\nTesting delete_song_from_library\n--------------------------------\n");
 	delete_song_from_lib(library, "Take What You Want", "Post Malone");
-	printf("\n\n");
 	print_library(library);
 	
 	printf("\nTesting clear_lib\n-----------------\n");
