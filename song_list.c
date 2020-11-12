@@ -10,7 +10,7 @@ struct song_node *new_song(char *name, char *artist) {
 	return new_s;
 }
 
-struct song_node *insert_front (struct song_node *song, char *name, char* artist) {
+struct song_node *insert_front(struct song_node *song, char *name, char* artist) {
 	struct song_node *new_s = new_song (name, artist);
 	new_s->next = song;
 	
@@ -76,12 +76,19 @@ struct song_node *random_node(struct song_node *curr_list) {
 }
 
 void print_song(struct song_node *song) {
-	printf("Name: %s\n", song->name);
-	printf("Artist: %s\n", song->artist);
+	if (song) {
+		printf("Name: %s\n", song->name);
+		printf("Artist: %s\n", song->artist);
+	}
 }
 
 void print_list(struct song_node *curr_list) {
+	int a = 0;
 	while(curr_list) {
+		if (a) {
+			printf("\n");
+		}
+		a = 1;
 		print_song(curr_list);
 		curr_list = curr_list->next;
 	}
@@ -92,33 +99,23 @@ void free_song(struct song_node *song) {
 }
 
 struct song_node *find_artist_song(struct song_node *front, char *name, char *artist) { 
-	printf ("Finding %s, by %s\n", name, artist);
 	while (front) {
 		if (!strcmp(front->artist, artist) && !strcmp(front->name, name)) {
-			printf("Song found\n");
 			return front;
 			break;
 		}
 		front = front->next;
-		if (!front) {
-			printf("Song not found\n");
-		}
 	}
 	return NULL;
 }
 
 struct song_node *find_first_artist_song(struct song_node *front, char *artist) {
-	printf ("Finding first song by %s\n", artist);
 	while (front) {
 		if (!strcmp(front->artist, artist)) {
-			printf("First song is %s\n", front->name);
 			return front;
 			break;
 		}
 		front = front->next;
-		if (!front) {
-			printf("Artist not found\n");
-		}
 	}
 	return NULL;
 }

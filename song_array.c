@@ -68,51 +68,51 @@ void print_library(struct song_node **library) {
 	}
 }
 
-struct song_node *search_song(struct alpha_node *library, char *name, char *artist) {
+/*struct song_node *search_song(struct song_node **library, char *name, char *artist) {
      int val;
-     val = find_index(a[0]);
+     val = find_index(artist);
 
      struct song_node *to_head = ((library+val)-> head);
 
      return(find_artist_song(to_head,name,artist));
 }
 
-struct song_node *search_artist(struct alpha_node *library, char *artist) {
+struct song_node *search_artist(struct song_node **library, char *artist) {
      int val;
-     val = find_index(a[0]);
+     val = find_index(artist);
 
      struct song_node *to_head = ((library+val)->head);
 
      return(find_first_arist_song(to_head, artist));
 }
 
-void print_artist_songs(struct alpha_node *library, char *artist) {
+void print_artist_songs(struct song_node **library, char *artist) {
     int res; 
-    res = find_index(a[0]); 
+    res = find_index(artist); 
     struct song_node *next_pointer = ((library+res)->head); 
 
  	printf("Printing [%s]", a);
 
     while (next_pointer != NULL) {
         if(strcmp(next_pointer->artist, a) == 0){
-            print_song (next_pointer); 
+            print_song(next_pointer); 
         }
 		next_pointer = next_pointer->next; 
     }
 }
 
-void delete_song(struct alpha_node *library, char *name, char *artist) {
- 	int res = find_index(a[0]);
+void delete_song(struct song_node **library, char *name, char *artist) {
+ 	int res = find_index(artist);
 
- 	struct song_node *song = (library + res)->head;
+ 	struct song_node *song = (library + res);
 
  	(library + res)->head = delete_song(song, name, artist);
 }
 
-void clear_lib(struct alpha_node *library) {
+void clear_lib(struct song_node **library) {
  	int i = 0;
  	while (i < 27) {
      	if ((library + i)->head != NULL) (library + i)->head = free_list((library + i)->head);
      	i++;
  	}
-}
+}*/

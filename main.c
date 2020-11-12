@@ -19,13 +19,14 @@ int main() {
 	printf("\nPrinting List\n-------------\n");
 	print_list(list);
 	
-	printf("\nTesting find_artist_song\n------------------------\n");
-	find_artist_song(list, "Chosen One", "Polo G");
-	find_artist_song(list, "Take What You Want", "Post Malone");
+	printf("\nTesting find_artist_song on \"Soothsayer\"\n----------------------------------------\n");
+	print_song(find_artist_song(list, "Soothsayer", "Buckethead"));
+
+	printf("\nTesting find_artist_song on \"Take What You Want\"\n------------------------------------------------\n");
+	print_song(find_artist_song(list, "Take What You Want", "Post Malone"));
 	
-	printf("\nTesting find_first_artist_song\n------------------------------\n");
-	find_first_artist_song(list, "Polo G");
-	find_first_artist_song(list, "Post Malone");	
+	printf("\nTesting find_first_artist_song on artist Post Malone\n----------------------------------------------------\n");
+	print_song(find_first_artist_song(list, "Post Malone"));	
 	
 	printf("\nTesting delete_song on \"Test Dummy\"\n-----------------------------------\n");
 	list = delete_song(list, "Test Dummy");
