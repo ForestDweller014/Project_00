@@ -11,7 +11,6 @@ struct song_node *new_song(char *name, char *artist) {
 }
 
 struct song_node *insert_front (struct song_node *song, char *name, char* artist) {
-	printf ("Adding %s, by %s\n", name, artist);
 	struct song_node *new_s = new_song (name, artist);
 	new_s->next = song;
 	
@@ -79,58 +78,55 @@ struct song_node *random_node(struct song_node *curr_list) {
 void print_song(struct song_node *song) {
 	printf("Name: %s\n", song->name);
 	printf("Artist: %s\n", song->artist);
-	printf("\n");
 }
 
 void print_list(struct song_node *curr_list) {
 	while(curr_list) {
-		print_song (curr_list);
+		print_song(curr_list);
 		curr_list = curr_list->next;
 	}
 }
 
-void free_song (struct song_node *song) {
-	printf ("Deleting %s\n", song->name);
-	free (song);
+void free_song(struct song_node *song) {
+	free(song);
 }
 
-struct song_node *find_artist_song (struct song_node *front, char *name, char *artist) { 
+struct song_node *find_artist_song(struct song_node *front, char *name, char *artist) { 
 	printf ("Finding %s, by %s\n", name, artist);
 	while (front) {
 		if (!strcmp(front->artist, artist) && !strcmp(front->name, name)) {
-			printf ("Song found\n");
+			printf("Song found\n");
 			return front;
 			break;
 		}
 		front = front->next;
 		if (!front) {
-			printf ("Song not found\n");
+			printf("Song not found\n");
 		}
 	}
 	return NULL;
 }
 
-struct song_node *find_first_artist_song (struct song_node *front, char *artist) {
+struct song_node *find_first_artist_song(struct song_node *front, char *artist) {
 	printf ("Finding first song by %s\n", artist);
 	while (front) {
 		if (!strcmp(front->artist, artist)) {
-			printf ("First song is %s\n", front->name);
+			printf("First song is %s\n", front->name);
 			return front;
 			break;
 		}
 		front = front->next;
 		if (!front) {
-			printf ("Artist not found\n");
+			printf("Artist not found\n");
 		}
 	}
 	return NULL;
 }
 
-//This could probably be better optimized, it works though
-struct song_node *delete_song (struct song_node *front, char *search_name) {
+struct song_node *delete_song(struct song_node *front, char *search_name) {
 	if (!strcmp(front->name, search_name)) {
 		struct song_node *new_front = front->next;
-		free_song (front);
+		free_song(front);
 		return new_front;
 	}
 	else {
@@ -140,7 +136,7 @@ struct song_node *delete_song (struct song_node *front, char *search_name) {
 		while (current_song) {
 			if (!strcmp(current_song->name, search_name)) {
 				previous_song->next = current_song->next;
-				free_song (current_song);
+				free_song(current_song);
 				break;
 			}
 			previous_song = current_song;
@@ -150,17 +146,11 @@ struct song_node *delete_song (struct song_node *front, char *search_name) {
 	return front;
 }
 
-struct song_node *free_list (struct song_node *song) {
-	int songs_deleted = 0;
-	printf ("Deleting Library\n");
-	
+struct song_node *free_list(struct song_node *song) {
 	while (song) {
 		struct song_node *next_s = song->next;
-		free (song);
+		free(song);
 		song = next_s;
-		songs_deleted++;
 	}
-	printf ("Songs deleted: %d\n", songs_deleted);
-	
 	return NULL;
 }

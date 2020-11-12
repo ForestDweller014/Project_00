@@ -6,11 +6,46 @@
 #include "song_array.h"
 
 int main() {
+	struct song_node *list = NULL;
+
+	printf("Testing insert_front\n--------------------\n");
+	list = insert_front(list, "Take What You Want", "Post Malone");
+	list = insert_front(list, "While My Guitar Gently Weeps", "George Harrison");
+
+	printf("\nTesting insert_alphabetical\n---------------------------\n");
+	list = insert_alphabetical(list, "Test Dummy", "Post Malone");
+	list = insert_alphabetical(list, "Soothsayer", "Buckethead");
+
+	printf("\nPrinting List\n-------------\n");
+	print_list(list);
+	
+	printf("\nTesting find_artist_song\n------------------------\n");
+	find_artist_song(list, "Chosen One", "Polo G");
+	find_artist_song(list, "Take What You Want", "Post Malone");
+	
+	printf("\nTesting find_first_artist_song\n------------------------------\n");
+	find_first_artist_song(list, "Polo G");
+	find_first_artist_song(list, "Post Malone");	
+	
+	printf("\nTesting delete_song on \"Test Dummy\"\n-----------------------------------\n");
+	list = delete_song(list, "Test Dummy");
+
+	printf("\nPrinting List\n-------------\n");
+	print_list(list);
+	
+	printf("\nTesting free_list\n-----------------\n");
+	list = free_list(list);
+
+	printf("\nPrinting List\n-------------\n");
+	print_list(list);
+
 	struct song_node *library[27];
 	int i;
 	for (i = 0; i < 27; i++) {
 		library[i] = NULL;
 	}
+
+	printf("\nTesting add_song\n----------------\n");
 	add_song(library, "Take What You Want", "Post Malone");
 	add_song(library, "Hotel California", "The Eagles");
 	add_song(library, "While My Guitar Gently Weeps", "George Harrison");
@@ -21,39 +56,12 @@ int main() {
 	add_song(library, "Mr. Crowley", "Ozzy Osbourne");
 	add_song(library, "Free Bird", "Lynyrd Skynyrd");  
 	add_song(library, "Random Song", "*Weird Name*");
+
+	printf("\nPrinting Library\n----------------\n");
 	print_library(library);
+
+	printf("\nShuffled Playlist\n-----------------\n");
 	srand(time(NULL));
 	shuffle(library, 5);
-	
-	/*printf ("Testing insert_front, insert_alphabetical, print_list\n------------------------\n");
-	struct song_node *library = NULL;
-	library = insert_front (library, "Take What You Want", "Post Malone");
-	library = insert_front (library, "While My Guitar Gently Weeps", "George Harrison");
-	library = insert_alphabetical (library, "Test Dummy", " Post Malone");
-	library = insert_alphabetical (library, "Soothsayer", "Buckethead");
-	printf("\nPrinting List\n\n");
-	print_list (library);
-	
-	printf ("Testing find_artist_song\n------------------------\n");
-	find_artist_song(library, "Chosen One", "Polo G");
-	printf("\n");
-	find_artist_song(library, "Take What You Want", "Post Malone");
-	printf("\n");
-	
-	printf ("Testing find_first_artist_song\n------------------------\n");
-	find_first_artist_song(library, "Polo G");
-	printf("\n");
-	find_first_artist_song(library, "Post Malone");	
-	printf("\n");
-	
-	printf ("Testing delete_song\n------------------------\n");
-	delete_song (library, "Test Dummy");
-	printf("\n");
-	print_list (library);
-	printf("\n");
-	
-	library = free_list (library);
-	printf("\n");*/
-	
 	return 0;
 }
