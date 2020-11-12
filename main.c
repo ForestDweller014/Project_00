@@ -81,7 +81,7 @@ int main() {
 	printf("\nTesting search_song on \"Hotel California\"\n-----------------------------------------\n");
 	print_song(search_song(library, "Hotel California", "The Eagles"));
 
-	printf("\nTesting delete_song_from_library\n--------------------------------\n");
+	printf("\nTesting delete_song_from_library on \"Take What You Want\"\n--------------------------------------------------------\n");
 	delete_song_from_lib(library, "Take What You Want", "Post Malone");
 	
 	printf("\nPrinting Library\n----------------\n");
